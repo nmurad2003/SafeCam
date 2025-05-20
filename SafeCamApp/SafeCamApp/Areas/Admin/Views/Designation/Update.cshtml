@@ -1,0 +1,15 @@
+﻿@using SafeCamApp.ViewModels.DesignationVMs
+@model DesignationUpdateVM
+
+<div class="container-fluid">
+    <form method="post">
+
+        <div class="form-group">
+            <label asp-for="Name">Designation Name</label>
+            <input asp-for="Name" type="text" class="form-control" placeholder="Type here...">
+            <span asp-validation-for="Name" class="text-danger sm"></span>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+</div>

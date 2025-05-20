@@ -1,0 +1,42 @@
+﻿@using SafeCamApp.ViewModels.DesignationVMs
+@using SafeCamApp.ViewModels.MemberVMs
+@model MemberCreateVM
+
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label asp-for="FirstName">First Name</label>
+            <input asp-for="FirstName" type="text" class="form-control" placeholder="Type here...">
+            <span asp-validation-for="FirstName" class="text-danger sm"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LastName">Last Name</label>
+            <input asp-for="LastName" type="text" class="form-control" placeholder="Type here...">
+            <span asp-validation-for="LastName" class="text-danger sm"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DesignationId">Designation</label>
+
+            <select asp-for="DesignationId">
+                @foreach (DesignationGetVM item in ViewBag.Designations)
+                {
+                    <option value="@item.Id">@item.Name</option>    
+                }
+
+            </select>
+
+            <span asp-validation-for="DesignationId" class="text-danger sm"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Image">Image</label>
+            <input asp-for="Image" type="file" class="form-control" placeholder="Type here...">
+            <span asp-validation-for="Image" class="text-danger sm"></span>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+</div>

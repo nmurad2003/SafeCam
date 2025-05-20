@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SafeCamApp.Contexts;
+using SafeCamApp.Models;
 
 namespace SafeCamApp;
 
@@ -14,6 +17,22 @@ public class Program
 
         builder.Services.AddDbContext<SafeCamDbContext>(opt =>
             opt.UseSqlServer(builder.Configuration.GetConnectionString("default")));
+
+        builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+        {
+            opt.Password.RequiredLength = 6;
+            opt.Password.RequireDigit = false;
+            opt.Password.RequireLowercase = false;
+            opt.Password.RequireUppercase = false;
+            opt.Password.RequireNonAlphanumeric = false;
+            
+            opt.User.RequireUniqueEmail = true;
+            
+            opt.Lockout.MaxFailedAccessAttempts = 5;
+            opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+        })
+        .AddEntityFrameworkStores<SafeCamDbContext>()
+        .AddDefaultTokenProviders();
 
         var app = builder.Build();
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SafeCamApp.Contexts;
 
@@ -11,9 +12,11 @@ using SafeCamApp.Contexts;
 namespace SafeCamApp.Migrations
 {
     [DbContext(typeof(SafeCamDbContext))]
-    partial class SafeCamDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250520084952_addedIdentity")]
+    partial class addedIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

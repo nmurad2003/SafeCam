@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SafeCamApp.Models;
 
 namespace SafeCamApp.Contexts;
 
-public class SafeCamDbContext : DbContext
+public class SafeCamDbContext : IdentityDbContext<AppUser>
 {
     public DbSet<Designation> Designations { get; set; }
     public DbSet<Member> Members { get; set; }
